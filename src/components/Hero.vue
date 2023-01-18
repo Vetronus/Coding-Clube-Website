@@ -62,6 +62,6 @@ p {
     @apply absolute top-0 left-0 bottom-0 right-0 -z-20 bg-center bg-no-repeat bg-cover hidden;
     height: calc(100vh - 64px);
     background-image: url("../assets/pattern.svg");
-    filter: blur(20px);
+    filter: blur(5px);
 }
 </style>
