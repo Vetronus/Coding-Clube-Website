@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center items-center absolute w-full h-screen blur-sm">
+    <div class="animCon flex justify-center items-center absolute w-full bg-black">
         <div class="animation-wrapper">
             <div class="sphere-animation">
                 <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
@@ -159,6 +159,9 @@ export default {
 
 
 <style scoped>
+.animCon{
+    height: calc(100vh - 64px);
+}
 .animation-wrapper {
     width: 50%;
     padding-bottom: 50%;
@@ -182,7 +185,7 @@ export default {
 
 @media (min-width: 500px) {
     .sphere path {
-        stroke-width: .4px;
+        stroke-width: 1px;
     }
 }
 </style>

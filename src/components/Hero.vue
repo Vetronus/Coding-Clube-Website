@@ -1,6 +1,6 @@
 <template>
-    <div class="hero-div enableBlur">
-        <div class="bgBlur"></div>
+    <div class="hero-div">
+        <div class=""></div>
         <div>
             <p>Welcome To Trinity Institute of Professional Studies</p>
         </div>
@@ -46,7 +46,7 @@ import Scrolldown from './Scrolldown.vue';
 }
 
 .hero-div {
-    @apply flex flex-col text-center items-center justify-center relative;
+    @apply flex flex-col text-center items-center justify-center relative text-white;
     height: calc(100vh - 64px);
 }
 
@@ -56,12 +56,5 @@ import Scrolldown from './Scrolldown.vue';
 
 p {
     @apply text-xl
-}
-
-.bgBlur {
-    @apply absolute top-0 left-0 bottom-0 right-0 -z-20 bg-center bg-no-repeat bg-cover hidden;
-    height: calc(100vh - 64px);
-    background-image: url("../assets/pattern.svg");
-    filter: blur(5px);
 }
 </style>
