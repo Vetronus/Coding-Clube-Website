@@ -7,6 +7,8 @@ function visit(elStr) {
 }
 
 const toggleNav = () => showNav.value = !showNav.value;
+
+
 </script>
 
 <template>

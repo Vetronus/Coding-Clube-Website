@@ -2,13 +2,14 @@
     <div class="hero-div">
         <div class=""></div>
         <div>
-            <p>Welcome To Trinity Institute of Professional Studies</p>
+            <p class="hidden md:block">Welcome To Trinity Institute of Professional Studies</p>
+            <p class="md:hidden">Welcome To TIPS</p>
         </div>
         <div>
             <div class="heading">CODING CLUB</div>
         </div>
         <div>
-            <p>Develop Your Skills Without Diligence</p>
+            <p class="text-sm">Develop Your Skills Without Diligence</p>
         </div>
     </div>
     <Scrolldown />
@@ -21,7 +22,7 @@ import Scrolldown from './Scrolldown.vue';
 
 <style lang="postcss" scoped>
 .heading {
-    @apply text-8xl font-extrabold;
+    @apply text-6xl md:text-8xl font-extrabold;
     background: linear-gradient(to right, #3f5efb, #fc466b, #3f5efb, #fc466b);
     background-size: 300%;
     -webkit-background-clip: text;
@@ -55,6 +56,6 @@ import Scrolldown from './Scrolldown.vue';
 }
 
 p {
-    @apply text-xl
+    @apply md:text-xl text-base px-6 md:px-0;
 }
 </style>

@@ -20,7 +20,7 @@
 
 <style lang="postcss" scoped>
 .arrow-container {
-    @apply mx-auto absolute left-0 right-0 bottom-12;
+    @apply mx-auto absolute left-0 right-0 md:bottom-12 bottom-8;
     width: 100px;
     height: 100px;
 }
