@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.vue';
 import EventGrid from './components/EventGrid.vue';
 import Sphere from './components/Sphere.vue';
 import ProjectGrid from './components/ProjectGrid.vue';
+import MembersGrid from './components/MembersGrid.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import ProjectGrid from './components/ProjectGrid.vue';
     <Hero />
     <EventGrid />
     <ProjectGrid />
+    <MembersGrid/>
 </template>
 
 <style lang="postcss">

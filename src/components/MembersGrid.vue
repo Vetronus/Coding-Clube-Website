@@ -1,0 +1,22 @@
+<template>
+    <div id="projects" class="py-16 px-4 bg-black">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-6xl uppercase mb-12 text-white text-center">WE ARE</h1>
+            <div class="flex items-center justify-center flex-row flex-wrap gap-12">
+                <ProfileCard v-for="i in 9" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import ProfileCard from './ProfileCard.vue';
+let colors = [
+    "bg-gradient-to-r from-emerald-400 to-cyan-400",
+    "bg-gradient-to-r from-cyan-400 to-blue-400",
+    "bg-gradient-to-r from-blue-400 to-violet-400",
+    "bg-gradient-to-r from-violet-400 to-fuchsia-400",
+    "bg-gradient-to-r from-fuchsia-400 to-rose-400",
+    "bg-gradient-to-r from-rose-400 to-orange-400"
+]
+</script>
