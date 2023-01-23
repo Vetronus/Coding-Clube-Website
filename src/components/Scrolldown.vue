@@ -8,10 +8,7 @@
     <a @click="scrollDownToEvents">
         <div class="arrow-container animated fadeInDown">
             <div class="arrow-2">
-                <!-- <i class="fa fa-angle-down"></i> -->
-                <span class="material-symbols-outlined">
-                    expand_more
-                </span>
+                <span class="fa fa-angle-down"></span>
             </div>
             <div class="arrow-1 animated hinge infinite zoomIn"></div>
         </div>
@@ -51,7 +48,7 @@
 }
 
 .arrow-2 span {
-    @apply pt-1 table-cell align-middle text-center text-white text-5xl;
+    @apply pt-1 table-cell align-middle text-center text-white text-3xl;
 }
 
 /* Custom Animate.css */

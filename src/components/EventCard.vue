@@ -13,9 +13,7 @@
             <p>{{ venue }}</p>
         </div>
         <div>
-            <span class="material-symbols-outlined">
-                arrow_forward
-            </span>
+            <i class="text-xl mr-2 fa-solid fa-arrow-right"></i>
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@ const tags = [
             <div class="px-3">
                 <h1 class="text-2xl font-semibold">TIPS Coding Club</h1>
                 <div class="flex items-center">
-                    <span class="material-symbols-outlined text-sm text-gray-500">calendar_month</span>
+                    <span class="fa fa-calendar-days text-sm text-gray-500"></span>
                     <span class="text-sm mt-0.5 ml-1 text-gray-500">15 February 2023</span>
                 </div>
                 <hr>
@@ -33,10 +33,8 @@ const tags = [
                     <img v-for="i in 3" class="w-6 h-6 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=64">
                 </div>
                 <div class="flex gap-2">
-                    <!-- <img  class="w-6 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=64"> -->
-                    <span class="material-symbols-outlined text-xl">code</span>
-                    <!-- <span class="material-symbols-outlined text-xl">language</span> -->
-                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+                    <span class="fa-brands fa-github text-xl"></span>
+                    <span class="fa-solid fa-arrow-right text-xl"></span>
                 </div>
             </div>
         </div>

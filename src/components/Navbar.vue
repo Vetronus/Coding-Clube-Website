@@ -16,7 +16,7 @@ const toggleNav = () => showNav.value = !showNav.value;
         <div class="h-16 bg-white">
             <div class="nav-container flex mx-auto max-w-6xl px-4 justify-between">
                 <div class="md:hidden w-16 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-3xl" @click="toggleNav">menu</span>
+                    <i class="fa-solid fa-bars text-2xl" @click="toggleNav"></i>
                 </div>
                 <div class="nav-logo">
                     <img class="h-16 w-24 md:w-28 p-1" src="../assets/logo.svg" alt="Trinity Coding Club">
@@ -36,8 +36,8 @@ const toggleNav = () => showNav.value = !showNav.value;
     </nav>
     <dialog :open="showNav" class="fixed top-0 left-0 z-50 w-full p-0">
         <div class="relative">
-            <div class="absolute top-4 left-6">
-                <span class="material-symbols-outlined text-3xl" @click="toggleNav">close</span>
+            <div class="absolute top-3.5 left-10">
+                <span class="fa fa-xmark text-3xl" @click="toggleNav"></span>
             </div>
         </div>
         <div class="nav-item-container flex flex-col items-center justify-center h-screen">
