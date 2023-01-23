@@ -1,5 +1,5 @@
 <template>
-<div class="card flex flex-col justify-between w-64 h-64 p-4 flex-grow rounded shadow last:flex" :class="bgColor">
+<div class="cursor-pointer card flex flex-col justify-between w-64 h-64 p-4 flex-grow rounded shadow last:flex" :class="bgColor">
     <div>
         <p class="">{{ date.toLocaleString('default', { month: 'long' }) }}</p>
         <h1 class="text-5xl font-semibold">{{ date.getDate() }}</h1>

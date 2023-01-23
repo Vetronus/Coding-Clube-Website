@@ -12,5 +12,8 @@ import Sphere from './components/Sphere.vue';
     <EventGrid/>
 </template>
 
-<style>
+<style lang="postcss">
+a {
+    @apply cursor-pointer;
+}
 </style>

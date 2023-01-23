@@ -161,6 +161,7 @@ export default {
 <style scoped>
 .animCon{
     height: calc(100vh - 64px);
+    /* filter: blur(1px); */
 }
 .animation-wrapper {
     width: 50%;
