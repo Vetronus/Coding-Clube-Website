@@ -158,13 +158,13 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="postcss">
 .animCon{
     height: calc(100vh - 64px);
     /* filter: blur(1px); */
 }
 .animation-wrapper {
-    width: 50%;
+    @apply md:w-1/2 w-4/5;
     padding-bottom: 50%;
 }
 
