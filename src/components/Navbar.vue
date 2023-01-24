@@ -23,9 +23,9 @@ const toggleNav = () => showNav.value = !showNav.value;
                 </div>
                 <div class="nav-item-container md:flex items-center hidden">
                     <div class="nav-item"> <a @click="visit('#events')">Events</a></div>
-                    <div class="nav-item"><a @click="visit('#events')">Projects</a></div>
-                    <div class="nav-item"><a @click="visit('#events')">Members</a></div>
-                    <div class="nav-item"><a @click="visit('#events')">About</a></div>
+                    <div class="nav-item"><a @click="visit('#projects')">Projects</a></div>
+                    <div class="nav-item"><a @click="visit('#team')">Team</a></div>
+                    <div class="nav-item"><a @click="visit('#contact')">Contact</a></div>
                 </div>
                 <div class="nav-button flex items-center center justify-end">
                     <!-- <img class="h-16 w-24 p-1" src="../assets/TRICC.svg" alt="Trinity Coding Club"> -->
@@ -42,9 +42,9 @@ const toggleNav = () => showNav.value = !showNav.value;
         </div>
         <div class="nav-item-container flex flex-col items-center justify-center h-screen">
             <div class="mobile-nav-item"> <a @click="visit('#events')">Events</a></div>
-            <div class="mobile-nav-item"><a href="">Projects</a></div>
-            <div class="mobile-nav-item"><a href="">Members</a></div>
-            <div class="mobile-nav-item"><a href="">About</a></div>
+            <div class="mobile-nav-item"><a @click="visit('#projects')">Projects</a></div>
+            <div class="mobile-nav-item"><a @click="visit('#team')">Team</a></div>
+            <div class="mobile-nav-item"><a @click="visit('#contact')">Contact</a></div>
         </div>
     </dialog>
 </template>

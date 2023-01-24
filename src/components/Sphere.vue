@@ -164,7 +164,8 @@ export default {
     /* filter: blur(1px); */
 }
 .animation-wrapper {
-    @apply md:w-1/2 w-4/5;
+    /* @apply md:w-1/2 w-4/5; */
+    @apply w-full md:w-1/2;
     padding-bottom: 50%;
 }
 

@@ -1,9 +1,9 @@
 <template>
-    <div id="projects" class="py-16 px-4 bg-black">
+    <div id="projects" class="py-28 px-4 bg-slate-100">
         <div class="max-w-5xl mx-auto">
-            <h1 class="text-6xl uppercase mb-12 text-white text-center">WE ARE</h1>
-            <div class="flex items-center justify-center flex-row flex-wrap gap-12">
-                <ProfileCard v-for="i in 9" />
+            <h1 class="text-6xl uppercase mb-12">Team</h1>
+            <div class="flex items-center justify-center flex-row flex-wrap gap-10">
+                <ProfileCard v-for="i in 6" />
             </div>
         </div>
     </div>

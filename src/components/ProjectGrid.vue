@@ -1,9 +1,9 @@
 <template>
-    <div id="projects" class="py-16 px-4 bg-white">
+    <div id="projects" class="py-24 px-4 bg-white">
         <div class="max-w-5xl mx-auto">
             <h1 class="text-6xl uppercase mb-12">Projects</h1>
             <div class="flex flex-row flex-wrap gap-12">
-                <ProjectCard v-for="i in 3" />
+                <ProjectCard v-for="i in 2" />
             </div>
         </div>
     </div>
