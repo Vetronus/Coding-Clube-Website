@@ -1,16 +1,16 @@
 <template>
-<div class="cursor-pointer card flex flex-col justify-between w-64 h-64 p-4 flex-grow rounded shadow last:flex" :class="bgColor">
+<div class="cursor-pointer card flex flex-col justify-between w-64 h-64 p-4 flex-grow rounded shadow last:flex" :class="event.color">
     <div>
-        <p class="">{{ date.toLocaleString('default', { month: 'long' }) }}</p>
-        <h1 class="text-5xl font-semibold">{{ date.getDate() }}</h1>
+        <p class="">{{ event.date.toLocaleString('default', { month: 'long' }) }}</p>
+        <h1 class="text-5xl font-semibold">{{ event.date.getDate() }}</h1>
     </div>
     <div>
-        <p class="text-xl">{{ name }}</p>
+        <p class="text-xl">{{ event.name }}</p>
     </div>
     <div class="flex justify-between items-center text-sm">
         <div>
-            <p>{{ note }}</p>
-            <p>{{ venue }}</p>
+            <p>{{ event.time }}</p>
+            <p>{{ event.location }}</p>
         </div>
         <div>
             <i class="text-xl mr-2 fa-solid fa-arrow-right"></i>
@@ -21,16 +21,6 @@
 
 <script>
 export default{
-    props: ['bgColor'],
-    data(){
-        return {
-            date: new Date(),
-            name: "TIPS FRESHERS OF BATCH 2023",
-            venue: "Hotel Raddison",
-            note: "01:00 - 04:30",
-            link: "https://aroxbit.com",
-        }
-    },
-    
+    props: ['event'],
 }
 </script>
