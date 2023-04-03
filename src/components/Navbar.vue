@@ -1,7 +1,15 @@
 <script setup>
+import { walkIdentifiers } from '@vue/compiler-core';
 import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter();
+
 const showNav = ref(false);
-function visit(elStr) {
+async function visit(elStr) {
+    if(router.currentRoute != '/') {
+        router.push('/');
+        await new Promise(resolve => setTimeout(resolve, 200));
+    }
     (document.querySelector(elStr)).scrollIntoView({ behavior: 'smooth' });
     showNav.value = false;
 }
@@ -19,7 +27,10 @@ const toggleNav = () => showNav.value = !showNav.value;
                     <i class="fa-solid fa-bars text-2xl" @click="toggleNav"></i>
                 </div>
                 <div class="nav-logo">
-                    <img class="h-16 w-24 md:w-28 p-1" src="../assets/logo.svg" alt="Trinity Coding Club">
+                    <!-- <img class="h-16 w-24 md:w-28 p-1" src="../assets/logo.svg" alt="Trinity Coding Club"> -->
+                    <router-link to="/">
+                        <img class="h-16 w-24 md:w-28 p-1" src="../assets/logo.svg" alt="Trinity Coding Club">
+                    </router-link>
                 </div>
                 <div class="nav-item-container md:flex items-center hidden">
                     <div class="nav-item"> <a @click="visit('#events')">Events</a></div>

@@ -29,8 +29,8 @@ const props = defineProps({
                     <img v-for="i in 3" class="w-6 h-6 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=64">
                 </div>
                 <div class="flex gap-2">
-                    <span class="fa-brands fa-github text-xl"></span>
-                    <span class="fa-solid fa-arrow-right text-xl"></span>
+                    <a :href="props.project.github"><span class="fa-brands fa-github text-xl"></span></a>
+                    <a :href="props.project.link"><span class="fa-solid fa-arrow-right text-xl"></span></a>
                 </div>
             </div>
         </div>

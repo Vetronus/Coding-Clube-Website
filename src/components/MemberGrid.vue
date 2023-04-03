@@ -1,5 +1,5 @@
 <template>
-    <div id="projects" class="py-28 px-4 bg-slate-100">
+    <div id="team" class="py-28 px-4 bg-slate-100">
         <div class="max-w-5xl mx-auto">
             <h1 class="text-6xl uppercase mb-12">Team</h1>
             <div class="flex items-center justify-center flex-row flex-wrap gap-10">
