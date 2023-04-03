@@ -1,9 +1,9 @@
 <script setup>
 import Hero from '../components/Hero.vue';
-import EventGrid from '../components/EventGrid.vue';
 import Sphere from '../components/Sphere.vue';
+import EventGrid from '../components/EventGrid.vue';
 import ProjectGrid from '../components/ProjectGrid.vue';
-import MembersGrid from '../components/MembersGrid.vue';
+import MemberGrid from '../components/MemberGrid.vue';
 import Footer from '../components/Footer.vue';
 </script>
 
@@ -12,6 +12,6 @@ import Footer from '../components/Footer.vue';
     <Hero />
     <EventGrid />
     <ProjectGrid />
-    <MembersGrid/>
+    <MemberGrid/>
     <Footer/>
 </template>
