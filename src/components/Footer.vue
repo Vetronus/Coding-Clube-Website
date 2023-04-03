@@ -1,5 +1,5 @@
 <template>
-    <div id="contact" class="py-16 px-4 bg-stone-900 text-white">
+    <div id="contact" class="py-16 px-4 bg-stone-900 text-white  ">
         <div class="max-w-5xl mx-auto">
             <h1 class="text-6xl uppercase mb-12">Contact Us</h1>
             <div class="flex flex-wrap justify-center gap-12">
