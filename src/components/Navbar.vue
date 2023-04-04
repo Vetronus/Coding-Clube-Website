@@ -1,7 +1,7 @@
 <script setup>
 import { walkIdentifiers } from '@vue/compiler-core';
 import { ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const showNav = ref(false);
