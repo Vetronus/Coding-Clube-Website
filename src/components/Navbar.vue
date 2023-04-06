@@ -1,7 +1,9 @@
 <script setup>
-import { walkIdentifiers } from '@vue/compiler-core';
+import LoginForm from './LoginForm.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/AuthStore';
+const authStore = useAuthStore();
 const router = useRouter();
 
 const showNav = ref(false);
@@ -15,6 +17,9 @@ async function visit(elStr) {
 }
 
 const toggleNav = () => showNav.value = !showNav.value;
+
+const showLoginForm = ref(false);
+const toggleLoginForm = () => showLoginForm.value = !showLoginForm.value;
 
 
 </script>
@@ -40,7 +45,8 @@ const toggleNav = () => showNav.value = !showNav.value;
                 </div>
                 <div class="nav-button flex items-center center justify-end">
                     <!-- <img class="h-16 w-24 p-1" src="../assets/TRICC.svg" alt="Trinity Coding Club"> -->
-                    <button class="md:w-28 w-16 text-sm shadow shadow-black">Join</button>
+                    <button v-if="authStore.user" class="md:w-28 w-16 text-sm " @click.prevent="() => authStore.logout()" >Logout</button>
+                    <button v-else class="md:w-28 w-16 text-sm " @click.prevent="toggleLoginForm" >Login</button>
                 </div>
             </div>
         </div>
@@ -58,6 +64,7 @@ const toggleNav = () => showNav.value = !showNav.value;
             <div class="mobile-nav-item"><a @click="visit('#contact')">Contact</a></div>
         </div>
     </dialog>
+    <LoginForm :show="showLoginForm" @toggleLoginForm="toggleLoginForm" />
 </template>
 
 <style lang="postcss" scoped>
@@ -72,10 +79,11 @@ nav {
 }
 
 .mobile-nav-item {
-    @apply mx-4 font-semibold uppercase p-4  w-full text-center text-2xl;
+    @apply mx-4 uppercase p-4  w-full text-center text-2xl;
 }
 
 button {
-    @apply bg-indigo-500 py-2 px-4 rounded-md uppercase font-semibold text-white;
+    @apply bg-indigo-500 py-2.5 px-4 rounded-md uppercase font-semibold text-white;
+    @apply active:bg-indigo-400 hover:bg-indigo-600 ;
 }
 </style>

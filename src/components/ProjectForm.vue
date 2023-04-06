@@ -1,6 +1,6 @@
 <template>
 <!-- Main modal -->
-<div v-if="props.show" id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 flex left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full justify-center items-center ">
+<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 flex left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full justify-center items-center ">
     <div class="relative w-full  max-w-md md:h-auto">
         <!-- Modal content -->
         <div class="relative bg-gray-200 rounded-lg shadow">

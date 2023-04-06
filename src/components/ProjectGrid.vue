@@ -7,10 +7,12 @@
             </div>
         </div>
     </div>
+    <ProjectForm/>
 </template>
 
 <script setup>
 import ProjectCard from './ProjectCard.vue';
+import ProjectForm from './ProjectForm.vue';
 const props = defineProps({
     num: {
         type: Number,
