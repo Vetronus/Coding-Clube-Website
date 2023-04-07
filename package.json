@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueform/multiselect": "^2.6.1",
     "animejs": "^3.2.1",
     "firebase": "^9.19.1",
     "pinia": "^2.0.33",

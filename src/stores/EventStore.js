@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, getDocs, addDoc, Timestamp } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../fb";
 
 
@@ -20,11 +20,9 @@ export const useEventStore = defineStore({
     actions: {
         async listEvents(num){
             if(this.list.length > 0) return;
-            
             let i = 0;
             const querySnapshot = await getDocs(collection(db, "events"));
             querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data().name}`);
                 const nev = {
                     id: doc.id,
                     name: doc.data().name,
@@ -40,15 +38,22 @@ export const useEventStore = defineStore({
         },
         async createEvent(event) {
             const i = this.list.length;
-            
             try {
                 const docRef = await addDoc(collection(db, "events"), event);
-                console.log("Document written with ID: ", docRef.id);
                 event.id = docRef.id;
                 event.date = new Date(event.date);
                 event.color = colors[i - (parseInt(i/6)*6)];
                 this.list.push(event);
             } catch (e) { console.error("Error adding document: ", e); }
         },
+        async deleteEvent(id) {
+            try {
+                await deleteDoc(doc(db, "events", id));
+                const index = this.list.findIndex((e) => e.id === id);
+                this.list.splice(index, 1);
+                console.log("Document successfully deleted!");
+            }catch(e){ console.error("Error removing document: ", e);}
+
+        }
     },
 })

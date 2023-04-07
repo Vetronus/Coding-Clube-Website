@@ -9,8 +9,8 @@ const props = defineProps({
 <template>
     <div class="bg-white rounded shadow flex-grow flex flex-col w-72 gap-6">
         <div>
-            <img class="rounded-t" src="../assets/test.png">
-            <!-- <img class="rounded-t" :src="props.project.image"> -->
+            <!-- <img class="rounded-t" src="../assets/test.png"> -->
+            <img class="rounded-t" :src="props.project.image">
         </div>
         <div class="flex flex-col gap-6">
             <div class="px-3">

@@ -52,7 +52,7 @@
 
 
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 import { useEventStore } from '../stores/EventStore';
 const eventStore = useEventStore();
 const props = defineProps(["show"]);

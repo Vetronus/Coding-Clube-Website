@@ -35,7 +35,7 @@
     </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 import { useAuthStore } from '../stores/AuthStore';
 const authStore = useAuthStore();
 const props = defineProps(["show"]);

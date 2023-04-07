@@ -30,7 +30,6 @@ import { onMounted, ref } from 'vue';
 import EventCard from './EventCard.vue';
 import EventForm from './EventForm.vue';
 let loading = ref(true);
-let admin = ref(true);
 let show = ref(false);
 const eventStore = useEventStore();
 const authStore = useAuthStore();
@@ -40,7 +39,7 @@ const props = defineProps({num: {type: Number, default: 6}});
 function toggleModal(){
     show.value = !show.value;
 }
-console.log(router.currentRoute.value.path);
+
 onMounted(async () => {
     loading.value = true;
     await eventStore.listEvents(props.num);

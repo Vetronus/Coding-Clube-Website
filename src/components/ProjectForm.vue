@@ -8,36 +8,47 @@
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-600 text-center">Create A New Event</h3>
                 <form class="space-y-6" action="#">
+
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-600">Event Name</label>
-                        <input type="text" v-model="name" name="name" id="name" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="TIPS Event" required>
+                        <label for="file" class="block mb-2 text-sm font-medium text-gray-600">Project Screenshot</label>
+                        <input type="file" @change="fileUpdated" name="file" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="TIPS Project">
                     </div>
 
                     <div>
-                        <label for="date" class="block mb-2 text-sm font-medium text-gray-600">Event Date</label>
-                        <input type="date" v-model="date" name="date" id="date" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" required>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-600">Project Name</label>
+                        <input type="text" v-model="name" name="name" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="TIPS Project" required>
                     </div>
 
                     <div>
-                        <label for="time" class="block mb-2 text-sm font-medium text-gray-600">Event Timing</label>
-                        <input type="text" v-model="time" name="time" id="time" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="01:00 - 03:00 PM" required>
+                        <label for="date" class="block mb-2 text-sm font-medium text-gray-600">Project Date</label>
+                        <input type="date" v-model="date" name="date" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" required>
                     </div>
 
                     <div>
-                        <label for="location" class="block mb-2 text-sm font-medium text-gray-600">Event Location</label>
-                        <input type="text" v-model="location" name="location" id="location" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="Hotel Raddison" required>
+                        <label for="tags" class="block mb-2 text-sm font-medium text-gray-600">Used Technologies</label>
+                        <Multiselect name="tags" v-model="tags" mode="tags" :close-on-select="false" :create-option="true" :searchable="true" placeholder="Frameworks & Languages" />
                     </div>
 
                     <div>
-                        <label for="link" class="block mb-2 text-sm font-medium text-gray-600">Event URL</label>
-                        <input type="text" v-model="link" name="link" id="link" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="https://google.com">
+                        <label for="team" class="block mb-2 text-sm font-medium text-gray-600">Project Developers</label>
+                        <Multiselect name="team" :options="options" v-model="team" mode="multiple" :close-on-select="false" placeholder="Select Project Developers" />
+                    </div>
+
+                    <div>
+                        <label for="github" class="block mb-2 text-sm font-medium text-gray-600">Github URL</label>
+                        <input type="text" v-model="github" name="github" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="https://github.com">
+                    </div>
+
+                    <div>
+                        <label for="link" class="block mb-2 text-sm font-medium text-gray-600">Project URL</label>
+                        <input type="text" v-model="link" name="link" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="https://google.com">
                     </div>
 
                     
                     <div class="flex flex-row">
                         <button type="button" class=" mx-1 w-full text-black bg-gray-300 hover:bg-gray-400 active:bg-slate-300 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center" @click.prevent="$emit('toggleModal')">Cancel</button>
 
-                        <button type="button" :disabled="loading" @click.prevent="createEvent" class=" mx-1 w-full text-white bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-400 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center">
+                        <button type="button" :disabled="loading" @click.prevent="createProject" class=" mx-1 w-full text-white bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-400 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center">
                             <i v-if="loading" class="fa-solid fa-bolt fa-beat" style="color: #ffffff;"></i>
                             <span>Create</span>
                         </button>
@@ -52,24 +63,67 @@
 
 
 <script setup>
-import { ref, defineEmits } from 'vue'
-import { useEventStore } from '../stores/EventStore';
-const eventStore = useEventStore();
-const props = defineProps(["show"]);
+import Multiselect from '@vueform/multiselect'
+import { storage } from '../fb';
+import { ref as path, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
+import { ref } from 'vue';
+import { useProjectStore } from '../stores/ProjectStore';
+const projectStore = useProjectStore();
 const emit = defineEmits(["toggleModal"]);
+const image = ref("");
 const name = ref("");
 const date = ref("");
-const time = ref("");
-const location = ref("");
+const tags = ref([]);
+const team = ref([]);
+const github = ref("");
 const link = ref("");
+const file = ref(null);
 const loading = ref(false);
+const progress = ref(0);
 
-async function createEvent(){
+const options = ref([
+    "Parth Sarthee",
+    "Pranjal Mishra",
+    "Kavya Gupta",
+]);
+
+async function fileUpdated(e){
+    file.value = e.target.files[0];
+
+    // const fileName = "" + new Date().getTime()+file.value.name;
+    // const uploadRef = path(storage, fileName);
+    // await uploadBytesResumable(uploadRef, file.value);
+    // const url = await getDownloadURL(uploadRef);
+    // console.log(url);
+
+    // uploadTask.on('state_changed', (snapshot) => {
+    //     progress.value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //     console.log('Upload is ' + progress.value + '% done');
+    // }, (error) => {
+    //     console.log(error);
+    // }, async () => {
+    //     const url = await getDownloadURL(uploadRef);
+    //     console.log(url);
+    // })
+}
+
+async function createProject(){
     loading.value = true;
-    await eventStore.createEvent({name: name.value, date: date.value, time: time.value, location: location.value, link: link.value});
-    name.value = ""; date.value = ""; time.value = ""; location.value = ""; link.value = "";
+
+    // Upload image to firebase storage
+    const fileName = new Date().getTime()+file.value.name;
+    const uploadRef = path(storage, fileName);
+    await uploadBytesResumable(uploadRef, file.value);
+    image.value = await getDownloadURL(uploadRef);
+
+    await projectStore.createProject({image: image.value, name: name.value, date: date.value, tags: tags.value, team: team.value, link: link.value, github: github.value});
+    image.value = ""; name.value = ""; date.value = ""; tags.value = []; team.value = [];
+    github.value=""; link.value = "";
     emit("toggleModal");
+
     loading.value = false;
 }
 
 </script>
+
+<style src="@vueform/multiselect/themes/default.css"></style>
