@@ -1,13 +1,17 @@
 <script setup>
-
-const props = defineProps({
-    project: Object
-})
+import { useAuthStore } from '../stores/AuthStore';
+import { useProjectStore } from '../stores/ProjectStore';
+const authStore = useAuthStore();
+const projectStore = useProjectStore();
+const props = defineProps({ project: Object })
 
 </script>
 
 <template>
     <div class="bg-white rounded shadow flex-grow flex flex-col w-72 gap-6">
+        <div v-if="authStore.user" @click="() => projectStore.deleteEvent(props.project.id)" class="absolute -top-3 -right-2 cursor-pointer bg-rose-400 px-2 rounded-full">
+            <i class="text-2xl text-gray-100 fa-solid fa-remove" ></i>
+        </div>
         <div>
             <!-- <img class="rounded-t" src="../assets/test.png"> -->
             <img class="rounded-t" :src="props.project.image">
@@ -26,7 +30,7 @@ const props = defineProps({
             </div>
             <div class="flex justify-between bg-indigo-100 p-4 items-center">
                 <div class="flex gap-1">
-                    <img v-for="i in 3" class="w-6 h-6 rounded-full" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=64">
+                    <img v-for="member in project.team" class="w-6 h-6 rounded-full" :src="member.image">
                 </div>
                 <div class="flex gap-2">
                     <a :href="props.project.github"><span class="fa-brands fa-github text-xl"></span></a>

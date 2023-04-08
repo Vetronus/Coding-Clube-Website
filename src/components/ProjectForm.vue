@@ -6,12 +6,12 @@
         <div class="relative bg-gray-200 rounded-lg shadow">
             <!-- Modal header -->
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-600 text-center">Create A New Event</h3>
-                <form class="space-y-6" action="#">
+                <h3 class="mb-4 text-xl font-medium text-gray-600 text-center">Create A New Project</h3>
+                <form class="space-y-6" @submit.prevent="createProject">
 
                     <div>
                         <label for="file" class="block mb-2 text-sm font-medium text-gray-600">Project Screenshot</label>
-                        <input type="file" @change="fileUpdated" name="file" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="TIPS Project">
+                        <input type="file" @change="fileUpdated" name="file" class="bg-white border border-gray-300 text-gray-600 text-sm rounded block w-full p-2.5" placeholder="TIPS Project" required>
                     </div>
 
                     <div>
@@ -31,7 +31,7 @@
 
                     <div>
                         <label for="team" class="block mb-2 text-sm font-medium text-gray-600">Project Developers</label>
-                        <Multiselect name="team" :options="options" v-model="team" mode="multiple" :close-on-select="false" placeholder="Select Project Developers" />
+                        <Multiselect name="team" :options="options" v-model="team" mode="multiple" :close-on-select="false" :object="true" placeholder="Select Project Developers" />
                     </div>
 
                     <div>
@@ -46,11 +46,11 @@
 
                     
                     <div class="flex flex-row">
-                        <button type="button" class=" mx-1 w-full text-black bg-gray-300 hover:bg-gray-400 active:bg-slate-300 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center" @click.prevent="$emit('toggleModal')">Cancel</button>
+                        <button type="reset" class=" mx-1 w-full text-black bg-gray-300 hover:bg-gray-400 active:bg-slate-300 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center" @click.prevent="$emit('toggleModal')">Cancel</button>
 
-                        <button type="button" :disabled="loading" @click.prevent="createProject" class=" mx-1 w-full text-white bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-400 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center">
+                        <button type="submit" :disabled="loading" class=" mx-1 w-full text-white bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-400 focus:outline-none font-medium rounded text-sm px-5 py-2.5 text-center">
                             <i v-if="loading" class="fa-solid fa-bolt fa-beat" style="color: #ffffff;"></i>
-                            <span>Create</span>
+                            <span v-else >Create</span>
                         </button>
                     </div>
                 </form>
@@ -66,9 +66,11 @@
 import Multiselect from '@vueform/multiselect'
 import { storage } from '../fb';
 import { ref as path, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useProjectStore } from '../stores/ProjectStore';
+import { useMemberStore } from '../stores/MemberStore';
 const projectStore = useProjectStore();
+const memberStore = useMemberStore();
 const emit = defineEmits(["toggleModal"]);
 const image = ref("");
 const name = ref("");
@@ -81,11 +83,9 @@ const file = ref(null);
 const loading = ref(false);
 const progress = ref(0);
 
-const options = ref([
-    "Parth Sarthee",
-    "Pranjal Mishra",
-    "Kavya Gupta",
-]);
+const options = ref([]);
+
+
 
 async function fileUpdated(e){
     file.value = e.target.files[0];
@@ -108,6 +108,10 @@ async function fileUpdated(e){
 }
 
 async function createProject(){
+    
+    if(tags.value.length == 0 || team.value.length == 0)
+        return alert("Please fill all the fields");
+    
     loading.value = true;
 
     // Upload image to firebase storage
@@ -123,6 +127,12 @@ async function createProject(){
 
     loading.value = false;
 }
+
+onMounted(() => {
+    memberStore.list.forEach(member => {
+        options.value.push({value: member, label: member.name});
+    });
+})
 
 </script>
 

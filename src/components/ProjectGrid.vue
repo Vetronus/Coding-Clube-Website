@@ -30,7 +30,7 @@ import { onMounted, ref } from 'vue';
 import ProjectCard from './ProjectCard.vue';
 import ProjectForm from './ProjectForm.vue';
 let loading = ref(true);
-let show = ref(true);
+let show = ref(false);
 const projectStore = useProjectStore();
 const authStore = useAuthStore();
 const router = useRouter();
@@ -42,7 +42,7 @@ function toggleModal(){
 
 onMounted(async () => {
     loading.value = true;
-    await projectStore.listProjects(props.num);
+    await projectStore.listProjects();
     loading.value = false;
 })
 </script>
