@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, getDocs, addDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../fb";
 
 

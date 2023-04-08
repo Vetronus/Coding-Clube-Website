@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, getDocs, addDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../fb";
 
 export const useProjectStore = defineStore({
@@ -18,7 +18,7 @@ export const useProjectStore = defineStore({
                     name: doc.data().name,
                     date: new Date(doc.data().date),
                     tags: doc.data().tags,
-                    team: doc.data().team,
+                    team: JSON.parse(doc.data().team),
                     link: doc.data().link,
                     github: doc.data().github
                 }
@@ -27,10 +27,18 @@ export const useProjectStore = defineStore({
         },
         async createProject(project) {
             try {
+                console.log(project.team);
+                project.team.forEach((element, index) => {
+                    project.team[index] = element.value;
+                });
+                project.team = JSON.stringify(project.team);
+                console.log(project.team);
                 const docRef = await addDoc(collection(db, "projects"), project);
                 console.log("Document written with ID: ", docRef.id);
                 project.id = docRef.id;
                 project.date = new Date(project.date);
+                project.team = JSON.parse(project.team);
+                console.log(project.team);
                 this.list.push(project);
             } catch (e) { console.error("Error adding document: ", e); }
         },

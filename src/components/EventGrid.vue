@@ -14,7 +14,7 @@
                     <router-link v-if="router.currentRoute.value.path == '/' && !loading" to="/events"><i class="text-4xl mr-2 fa-solid fa-arrow-right"></i></router-link>
                 </div>
             </div>
-            <EventForm :show="show" @toggleModal="toggleModal" />
+            <EventForm v-if="show" @toggleModal="toggleModal" />
             <div class="flex flex-wrap text-white gap-5">
                 <EventCard v-for="event in eventStore.list" :event="event" class="" />
             </div>

@@ -45,8 +45,8 @@ const toggleLoginForm = () => showLoginForm.value = !showLoginForm.value;
                 </div>
                 <div class="nav-button flex items-center center justify-end">
                     <!-- <img class="h-16 w-24 p-1" src="../assets/TRICC.svg" alt="Trinity Coding Club"> -->
-                    <button v-if="authStore.user" class="md:w-28 w-16 text-sm " @click.prevent="() => authStore.logout()" >Logout</button>
-                    <button v-else class="md:w-28 w-16 text-sm " @click.prevent="toggleLoginForm" >Login</button>
+                    <button v-if="authStore.user" class="md:w-28 md:text-sm w-16 text-xs " @click.prevent="() => authStore.logout()" >Logout</button>
+                    <button v-else class="md:w-28 md:text-sm w-16 text-xs " @click.prevent="toggleLoginForm" >Login</button>
                 </div>
             </div>
         </div>
