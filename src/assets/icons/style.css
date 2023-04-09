@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "aroxbit";
+  src: url("fonts/aroxbit.eot?7urz6z");
+  src: url("fonts/aroxbit.eot?7urz6z#iefix") format("embedded-opentype"),
+    url("fonts/aroxbit.ttf?7urz6z") format("truetype"),
+    url("fonts/aroxbit.woff?7urz6z") format("woff"),
+    url("fonts/aroxbit.svg?7urz6z#aroxbit") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "aroxbit" !important;
+  position: relative;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-facebook:before {
+  content: "\e907";
+}
+.ico-instagram:before {
+  content: "\e908";
+}
+.ico-linkedin:before {
+  content: "\e909";
+}
+.ico-twitter:before {
+  content: "\e90a";
+}
+.ico-chart:before {
+  content: "\e903";
+}
+.ico-shopping-cart:before {
+  content: "\e904";
+}
+.ico-school:before {
+  content: "\e905";
+}
+.ico-health-and-safety:before {
+  content: "\e906";
+}
+.ico-angle-left:before {
+  content: "\e900";
+}
+.ico-angle-right:before {
+  content: "\e901";
+}
+.ico-envelope:before {
+  content: "\e902";
+}
