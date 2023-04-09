@@ -8,8 +8,8 @@ const props = defineProps({ project: Object })
 </script>
 
 <template>
-    <div class="bg-white rounded shadow flex-grow flex flex-col w-72 gap-6">
-        <div v-if="authStore.user" @click="() => projectStore.deleteEvent(props.project.id)" class="absolute -top-3 -right-2 cursor-pointer bg-rose-400 px-2 rounded-full">
+    <div class="bg-white relative rounded shadow flex-grow flex flex-col w-72 gap-6">
+        <div v-if="authStore.user" @click="() => projectStore.deleteProject(props.project.id)" class="absolute -top-3 -right-2 cursor-pointer bg-rose-400 px-2 rounded-full">
             <i class="text-2xl text-gray-100 fa-solid fa-remove" ></i>
         </div>
         <div>

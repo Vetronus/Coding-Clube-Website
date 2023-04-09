@@ -35,6 +35,7 @@ export const useEventStore = defineStore({
                 i++;
                 this.list.push(nev);
             });
+            this.list.sort((a, b) => b.date.getTime() - a.date.getTime());
         },
         async createEvent(event) {
             const i = this.list.length;
@@ -44,6 +45,7 @@ export const useEventStore = defineStore({
                 event.date = new Date(event.date);
                 event.color = colors[i - (parseInt(i/6)*6)];
                 this.list.push(event);
+                this.list.sort((a, b) => b.date.getTime() - a.date.getTime());
             } catch (e) { console.error("Error adding document: ", e); }
         },
         async deleteEvent(id) {

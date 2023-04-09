@@ -24,6 +24,7 @@ export const useProjectStore = defineStore({
                 }
                 this.list.push(newProject);
             });
+            this.list.sort((a, b) => b.date.getTime() - a.date.getTime());
         },
         async createProject(project) {
             try {
@@ -40,6 +41,7 @@ export const useProjectStore = defineStore({
                 project.team = JSON.parse(project.team);
                 console.log(project.team);
                 this.list.push(project);
+                this.list.sort((a, b) => b.date.getTime() - a.date.getTime());
             } catch (e) { console.error("Error adding document: ", e); }
         },
         async deleteProject(id) {

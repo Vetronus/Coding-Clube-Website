@@ -16,7 +16,7 @@
             </div>
             <EventForm v-if="show" @toggleModal="toggleModal" />
             <div class="flex flex-wrap text-white gap-5">
-                <EventCard v-for="event in eventStore.list" :event="event" class="" />
+                <EventCard v-for="i in looper" :event="eventStore.list[i-1]" :key="eventStore.list[i-1].id"/>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
 import { useEventStore } from '../stores/EventStore';
 import { useAuthStore } from '../stores/AuthStore';
 import { useRouter } from 'vue-router';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import EventCard from './EventCard.vue';
 import EventForm from './EventForm.vue';
 let loading = ref(true);
@@ -35,7 +35,13 @@ const eventStore = useEventStore();
 const authStore = useAuthStore();
 const router = useRouter();
 
-const props = defineProps({num: {type: Number, default: 6}});
+const props = defineProps({num: {type: Number, default: 3}});
+const looper = computed(() => {
+    if(router.currentRoute.value.path == '/') 
+        return Math.min(props.num, eventStore.list.length);
+    else return eventStore.list.length;
+})
+
 function toggleModal(){
     show.value = !show.value;
 }
