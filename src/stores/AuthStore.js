@@ -10,7 +10,7 @@ import { auth } from "../fb";
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
-        user: true//null,
+        user: null,
     }),
     actions: {
         async login(email, password){
