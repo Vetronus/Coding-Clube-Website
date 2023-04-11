@@ -1,6 +1,6 @@
 <template>
     <div id="contact" class="lg:h-screen flex flex-row justify-center items-center bg-black text-white  ">
-        <div class="lg:max-w-5xl rounded flex flex-col lg:flex-row justify-center items-center bg-gray-800 lg:m-8">
+        <div class="lg:max-w-5xl rounded flex flex-col lg:flex-row justify-center items-stretch bg-gray-800 lg:m-8">
 
             <div class="flex flex-col lg:w-1/2 gap-6 p-8 lg:border-r lg:border-gray-500">
 
@@ -28,8 +28,8 @@
                 </form>
             </div>
 
-            <div class="flex flex-col lg:w-1/2 gap-6 p-8 justify-center items-center">
-                <div class="flex flex-col gap-3">
+            <div class="flex flex-col lg:w-1/2 p-8 justify-evenly ">
+                <div class="flex flex-col gap-4">
                     <h1 class="text-4xl font-semibold text-indigo-500">CONTACT INFO</h1>
                     <div class="max-w-md">
                         <i class=" mr-2 fa-solid fa-location-dot"></i>
@@ -53,27 +53,24 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-6">
                     <h1 class="text-4xl font-semibold text-indigo-500">FOLLOW US</h1>
-                    <div class="max-w-md">
-                        <i class=" mr-2 fa-solid fa-location-dot"></i>
-                        <span>Dwarka Sector 9, Institutional Area, Near Dwarka Sec. 10, Metro Station. New Delhi-110075</span>
-                    </div>
-                    <div>
-                        <i class="mr-2 fa-solid fa-envelope"></i>
-                        <span>tips@tips.edu.in</span>
-                    </div>
-                    <div>
-                        <i class="mr-2 fa-solid fa-phone"></i>
-                        <span>011- 45636921/22/23</span>
-                    </div>
-                    <div>
-                        <i class="mr-2 fa-solid fa-mobile-screen-button"></i>
-                        <span>9315911715</span>
-                    </div>
-                    <div>
-                        <i class="mr-2 fa-solid fa-mobile-screen-button"></i>
-                        <span>9315911714</span>
+                    <div class="flex flex-row items-center gap-10">
+                        <div>
+                            <i class="icon ico-facebook"></i>
+                        </div>
+                        <div class="max-w-md">
+                            <i class=" icon ico-twitter "></i>
+                        </div>
+                        <div>
+                            <i class="icon ico-instagram"></i>
+                        </div>
+                        <div>
+                            <i class="icon ico-linkedin"></i>
+                        </div>
+                        <div>
+                            <i class="icon ico-envelope"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,4 +79,4 @@
     </div>
 </template>
 
-<style src="@vueform/multiselect/themes/default.css"></style>
+<style src="../assets/icons/style.css"></style>
